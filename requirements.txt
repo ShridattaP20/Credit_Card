@@ -1,3 +1,7 @@
+# Local package install
+-e .
+
+# Third party package install
 pandas
 numpy
 matplotlib
@@ -5,3 +9,6 @@ scikit-learn
 seaborn
 dvc
 dvc[gdrive]
+pytest
+tox
+

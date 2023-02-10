@@ -32,3 +32,26 @@ stages:
     - path: data/processed/train_creditcard.csv
       md5: 3439972b15c511e712ddb03655c5ea58
       size: 120882564
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - path: data/processed/test_creditcard.csv
+      md5: 2a21701d79c9acdbad708ab7840a2fa9
+      size: 30219963
+    - path: data/processed/train_creditcard.csv
+      md5: 3439972b15c511e712ddb03655c5ea58
+      size: 120882564
+    - path: src/train_and_evaluate.py
+      md5: 12d9b4619332f47854e63343135969fa
+      size: 2463
+    params:
+      params.yaml:
+        estimators.LogisticRegression.params.C: 0.1
+        estimators.LogisticRegression.params.max_iter: 200
+    outs:
+    - path: report/params.json
+      md5: d88b9940934648f0914f46a832b3a1b2
+      size: 40
+    - path: report/scores.json
+      md5: f20e43dbccaaaa7606b068cad687d648
+      size: 87
