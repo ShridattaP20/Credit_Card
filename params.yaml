@@ -1,0 +1,31 @@
+base:
+  project: creditcardfraud-project
+  random_state: 42
+  target_col: Class
+
+data_source:
+  s3_source: data_given/creditcard.csv
+
+load_data:
+  raw_dataset_csv: data/raw/creditcard.csv
+
+split_data:
+  train_path: data/processed/train_creditcard.csv
+  test_path: data/processed/test_creditcard.csv
+  test_size: 0.2
+
+
+# estimators:
+#   ElasticNet:
+#     params:
+#       alpha: 0.88
+#       l1_ratio: 0.89
+#       # alpha: 0.9
+#       # l1_ratio: 0.4
+# model_dir: saved_models
+
+# reports:
+#   params: reports/params.json
+#   scores: reports/scores.json
+
+# webapp_model_dir: prediction_service/model/model.joblib
