@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from get_data import read_params
 import argparse
@@ -29,23 +30,33 @@ def train_and_evaluate(config_path):
 
     C = config["estimators"]["LogisticRegression"]["params"]["C"]
     max_iter = config["estimators"]["LogisticRegression"]["params"]["max_iter"]
+    solver = config["estimators"]["LogisticRegression"]["params"]["solver"]
 
     target = [config["base"]["target_col"]]
 
     train = pd.read_csv(train_data_path, sep=",")
     test = pd.read_csv(test_data_path, sep=",")
 
-    
+    train['hour'] = train['Time'] % (24 * 3600) // 3600
+    train['day'] = (train['Time'] // (24 * 3600)) % 7
+
+    test['hour'] = test['Time'] % (24 * 3600) // 3600
+    test['day'] = (test['Time'] // (24 * 3600)) % 7
+
     train_y = train[target]
     test_y = test[target]
 
     train_x = train.drop(target, axis=1)
     test_x = test.drop(target, axis=1)
-
+    
+    sc = StandardScaler()
+    train_x = sc.fit_transform(train_x)
+    test_x = sc.transform(test_x)
 
     lr = LogisticRegression(
         C=C, 
-        max_iter=max_iter, 
+        max_iter=max_iter,
+        solver=solver, 
         random_state=random_state)
     lr.fit(train_x, train_y)
 

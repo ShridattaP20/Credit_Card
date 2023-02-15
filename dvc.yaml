@@ -31,5 +31,5 @@ stages:
         cache: false
     - report/params.json:
         cache: false
-  #   outs:
-  #   - saved_models/model.joblib
+    outs:
+    - saved_models/model.joblib

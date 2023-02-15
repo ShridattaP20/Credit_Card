@@ -11,4 +11,5 @@ dvc
 dvc[gdrive]
 pytest
 tox
-
+flake8
+flask

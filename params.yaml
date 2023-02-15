@@ -18,14 +18,16 @@ split_data:
 estimators:
   LogisticRegression:
     params:
-      C: 0.1
-      max_iter: 200
-      # C: 0.2
-      # max_iter: 300
+      # C: 0.1
+      # max_iter: 200
+      # solver: 'liblinear'
+      C: 0.2
+      max_iter: 300
+      solver: 'liblinear'
 model_dir: saved_models
 
 reports:
   params: report/params.json
   scores: report/scores.json
 
-# webapp_model_dir: prediction_service/model/model.joblib
+webapp_model_dir: prediction_service/model/model.joblib

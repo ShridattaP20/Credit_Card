@@ -10,8 +10,8 @@ stages:
       md5: a0b3d510632e2bf9f75f0fe10c898ed5
       size: 603
     - path: src/load_data.py
-      md5: c3491fd0072da78caaa0a1a8aac21af0
-      size: 508
+      md5: fc8a22e263d9c69296d5bc20feab08e1
+      size: 506
     outs:
     - path: data/raw/creditcard.csv
       md5: dc31d6eb183be31c3ada5ab12115bdd2
@@ -42,16 +42,16 @@ stages:
       md5: 3439972b15c511e712ddb03655c5ea58
       size: 120882564
     - path: src/train_and_evaluate.py
-      md5: 12d9b4619332f47854e63343135969fa
-      size: 2463
+      md5: e7caa71453fd4fa2da79c46e76558a38
+      size: 2943
     params:
       params.yaml:
-        estimators.LogisticRegression.params.C: 0.1
-        estimators.LogisticRegression.params.max_iter: 200
+        estimators.LogisticRegression.params.C: 0.2
+        estimators.LogisticRegression.params.max_iter: 300
     outs:
     - path: report/params.json
-      md5: d88b9940934648f0914f46a832b3a1b2
+      md5: baaf86911d46db6ba7dcb6c5a8163418
       size: 40
     - path: report/scores.json
-      md5: f20e43dbccaaaa7606b068cad687d648
-      size: 87
+      md5: 1792339a7afe2e7ba7548d7d80840312
+      size: 88

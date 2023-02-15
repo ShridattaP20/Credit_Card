@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Credit_Card Fraud Prediction
+{% endblock title %}
+
+
+{% block custom_css %}
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock custom_css %}
+
+
+{% block body %}
+<!-- nav bar -->
+
+<nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="/">Credit_Card Fraud Prediction</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/c17hawke/dvc-plus-cml-test">source code</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <!-- nav bar ends -->
+
+    <div class="container-fluid masthead">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form method="POST">
+                        <!-- Input block-->
+                        <div class="form-group">
+                            <label for="translation">
+                                <blockquote class="blockquote">
+                                    <p class="mb-2">Enter the details as indicated:</p>
+                                </blockquote>
+                            </label>
+                            <textarea class="form-control" name="V1" rows="1"
+                                placeholder="V1 expected range 0.04 to 949.99"></textarea>
+                            <textarea class="form-control" name="V2" rows="1"
+                                placeholder="V2 expected range 0.01 to 1000.00"></textarea>
+                            <textarea class="form-control" name="V3" rows="1"
+                                placeholder="V3 expected range 0.02 to 390.68"></textarea>
+                            <textarea class="form-control" name="V4" rows="1"
+                                placeholder="V4 expected range 0.01 to 362.21"></textarea>
+                            <textarea class="form-control" name="V5" rows="1" 
+                                placeholder="V5 expected range 0.00 to 467.63"></textarea>
+                            <textarea class="form-control" name="V6" rows="1"
+                                placeholder="V6 expected range 0.01 to 352.89"></textarea>
+                            <textarea class="form-control" name="V7" rows="1"
+                                placeholder="V7 expected range 0.0 to 175.81"></textarea>
+                            <textarea class="form-control" name="V8" rows="1" 
+                                placeholder="V8 expected range 0.01 to 193.86"></textarea>
+                            <textarea class="form-control" name="V9" rows="1" 
+                                placeholder="V9 expected range 0.01 to 257.73"></textarea>
+                            <textarea class="form-control" name="V10" rows="1" 
+                                placeholder="V10 expected range 0.0 to 455.03"></textarea>
+                            <textarea class="form-control" name="V11" rows="1" 
+                                placeholder="V11 expected range 0.0 to 454.85"></textarea>
+                            <textarea class="form-control" name="V12" rows="1" 
+                                placeholder="V12 expected range 0.0 to 170.37"></textarea>
+                            <textarea class="form-control" name="V13" rows="1" 
+                                placeholder="V13 expected range 0.01 to 257.73"></textarea>
+                            <textarea class="form-control" name="V14" rows="1" 
+                                placeholder="V14 expected range 0.0 to 455.03"></textarea>
+                            <textarea class="form-control" name="V15" rows="1" 
+                                placeholder="V15 expected range 0.0 to 454.85"></textarea>
+                            <textarea class="form-control" name="V16" rows="1" 
+                                placeholder="V16 expected range 0.0 to 170.37"></textarea>
+                            <textarea class="form-control" name="V17" rows="1" 
+                                placeholder="V17 expected range 0.01 to 257.73"></textarea>
+                            <textarea class="form-control" name="V18" rows="1" 
+                                placeholder="V18 expected range 0.0 to 455.03"></textarea>
+                            <textarea class="form-control" name="V19" rows="1" 
+                                placeholder="V19 expected range 0.0 to 454.85"></textarea>
+                            <textarea class="form-control" name="V20" rows="1" 
+                                placeholder="V20 expected range 0.0 to 170.37"></textarea>
+                            <textarea class="form-control" name="V21" rows="1" 
+                                placeholder="V21 expected range 0.01 to 257.73"></textarea>
+                            <textarea class="form-control" name="V22" rows="1" 
+                                placeholder="V22 expected range 0.0 to 455.03"></textarea>
+                            <textarea class="form-control" name="V23" rows="1" 
+                                placeholder="V23 expected range 0.0 to 454.85"></textarea>
+                            <textarea class="form-control" name="V24" rows="1" 
+                                placeholder="V24 expected range 0.0 to 170.37"></textarea>
+                            <textarea class="form-control" name="V25" rows="1" 
+                                placeholder="V25 expected range 0.01 to 257.73"></textarea>
+                            <textarea class="form-control" name="V26" rows="1" 
+                                placeholder="V26 expected range 0.0 to 455.03"></textarea>
+                            <textarea class="form-control" name="V27" rows="1" 
+                                placeholder="V27 expected range 0.0 to 454.85"></textarea>
+                            <textarea class="form-control" name="V28" rows="1" 
+                                placeholder="V28 expected range 0.0 to 170.37"></textarea>
+                                <textarea class="form-control" name="Amount" rows="1" 
+                                placeholder="Amount expected range 0.01 to 257.73"></textarea>
+                            <textarea class="form-control" name="hour" rows="1" 
+                                placeholder="hour expected range 0.0 to 455.03"></textarea>
+                            <textarea class="form-control" name="day" rows="1" 
+                                placeholder="day expected range 0.0 to 454.85"></textarea>
+                            <textarea class="form-control" name="Time" rows="1" 
+                                placeholder="Time expected range 0.0 to 454.85"></textarea>
+
+                        </div>
+
+                        <!-- Select output language here. -->
+                        <div class="form-group">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Predict</button></br>
+                        </br>
+                    </form>
+                    <!-- Translated text returned by the Translate API is rendered here. -->
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="form-group">
+                            <label for="translation-result">
+
+                                <blockquote class="blockquote">
+                                    <p class="mb-2">Prediction:</p>
+                                </blockquote>
+
+                            </label>
+                            <textarea readonly class="form-control" id="exTextarea" rows="5">{{ response }}</textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% endblock body %}
+
+        {% block custom_js %}
+        <!-- Custom JS -->
+        <script src="{{ url_for('static', filename='script/index.js') }}"></script>
+        {% endblock custom_js %}
